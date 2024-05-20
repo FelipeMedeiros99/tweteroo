@@ -1,5 +1,6 @@
 let _username = "";
 
+
 function signUp() {
   const username = document.querySelector("#username").value;
   const picture = document.querySelector("#picture").value;
@@ -8,14 +9,14 @@ function signUp() {
     username,
     avatar: picture
   })
-  .then(() => {
-    _username = username;
-    loadTweets();
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Erro ao fazer cadastro! Consulte os logs.");
-  });
+    .then(() => {
+      _username = username;
+      setInterval(loadTweets, 1000);
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Erro ao fazer cadastro! Consulte os logs.");
+    });
 }
 
 function loadTweets() {
@@ -63,10 +64,10 @@ function postTweet() {
 }
 
 function escapeHtml(unsafe) {
-    return unsafe
-         .replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#039;");
- }
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
